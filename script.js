@@ -140,5 +140,6 @@ function drawWinningLine(combination) {
     line.style.top = `${ startRect.top + startRect.height / 2 - lineWidth / 2 } px`;
     line.style.left = `${ startRect.left + startRect.width / 2 } px`;
     line.style.transform = `rotate(${ lineAngle }rad)`;
+    line.style.transformOrigin = `top left`;
     document.getElementById('content').appendChild(line);
 }
