@@ -10,6 +10,10 @@ let fields = [
     null,
 ];
 
+
+let currentPlayer = 'circle';
+
+
 function init() {
     render();
 }
@@ -40,12 +44,12 @@ function render() {
     contentDiv.innerHTML = tableHtml;
 }
 
-function handleClick(index) {
+function handleClick(cell, index) {
     if (fields[index] === null) {
-        // Wechsel zwischen 'circle' und 'cross'
-        fields[index] = fields[index] === 'circle' ? 'cross' : 'circle';
-        render(); // Aktualisiere das Spielfeld nach dem Klick
-        document.querySelector(`[onclick="handleClick(${index})"]`).removeAttribute('onclick'); // Entferne das onclick-Attribut
+        fields[index] = currentPlayer;
+        cell.innerHTML = currentPlayer === 'circle' ? generateCircleSVG() : generateCrossSVG();
+        cell.onclick = null;
+        currentPlayer = currentPlayer === 'circle' ? 'cross' : 'circle';
     }
 }
 
